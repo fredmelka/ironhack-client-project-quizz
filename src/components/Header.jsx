@@ -1,15 +1,18 @@
 
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { useNavigate } from "react-router-dom";
-import { message, Row, Col, Tag } from 'antd';
+import React                                from 'react';
+import { useContext }                       from 'react';
+import { NavLink }                          from 'react-router-dom';
+import { useNavigate }                      from "react-router-dom";
+import { message, Row, Col, Tag, Button }   from 'antd';
+import { AuthContext }                      from '../context/Auth.context.jsx';
 
 
 export default function Header () {
 
-// let userId = localStorage.getItem('myFinCockpituserId');
-
+let {isLoggedIn, user} = useContext(AuthContext);
 let navigate = useNavigate();
+
+// let userId = localStorage.getItem('myFinCockpituserId');
 
 let [messageApi, contextHolder] = message.useMessage();
 let messageLogout = (value) => messageApi.open({type: 'warning', content: `Good bye ${value}!`});
@@ -18,28 +21,34 @@ let logOut = () => {
     messageLogout(localStorage.getItem('myFinCockpitusername'));
     localStorage.removeItem('myFinCockpituserId');
     localStorage.removeItem('myFinCockpitusername');
-    navigate('/');
-};
+    navigate('/');};
+
 
 return (
     <>
     {contextHolder}
-    <header>
 
-    <h3>I am the futur Header</h3>
-    
-    {/* <Row>
+    <header>
+    {/* <h3>I am the futur Header</h3> */}
+    <Row>
     <Col span={22} offset={1}>
+
+    {isLoggedIn && (
+        <>
         <NavLink to='/about'>About</NavLink>
         <NavLink to='/securities'>Securities</NavLink>
         <NavLink to='/watchlist'>Watch List</NavLink>
         <NavLink to='/resources'>Resources</NavLink>
-        {(userId) 
-                ? <Tag onClick={logOut} color='red'>Log Out</Tag>
-                : <NavLink to='/login'><Tag color='#12934f'>Log In</Tag></NavLink>}
-        <NavLink to='/signup'><Tag color='geekblue-inverse'> Sign Up</Tag></NavLink>
+        </>
+    )}
+
+    {(isLoggedIn)
+            ? <Button type='link' ghost onClick={logOut}>Log Out</Button>
+            : <NavLink to='/login'><Button type= 'default' style={{backgroundColor: '#12934f'}} >Log In</Button></NavLink>}
+
+    <NavLink to='/signup'><Button type='primary'> Sign Up</Button></NavLink>
     </Col>
-    </Row> */}
+    </Row>
     </header>
     </>);
 };
