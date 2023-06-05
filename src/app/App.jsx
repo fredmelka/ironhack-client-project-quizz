@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom';
 import { RouterProvider } from 'react-router-dom';
 import { createBrowserRouter } from 'react-router-dom';
 import { createRoutesFromElements } from 'react-router-dom';
+import { ConfigProvider, theme } from 'antd';
 
 import Root from '../pages/Root.jsx';
 import ErrorPage from '../pages/Error.jsx';
@@ -23,7 +24,9 @@ const router = createBrowserRouter(createRoutesFromElements(
 
 return (
   <>
+  <ConfigProvider theme={{algorithm: theme.darkAlgorithm, token: {colorPrimary: '#ffec3d', fontSize: 20}}}>
     <RouterProvider router={ router }/>
+  </ConfigProvider>
   </>);
 };
 
