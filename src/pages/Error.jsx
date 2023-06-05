@@ -20,7 +20,7 @@ return (
         <br />
         A web developer should get this issue fixed shortly.
         <br />
-        <strong onClick={returnHome}>Return to Home page!</strong>
+        <strong onClick={returnHome}>Click HERE to return Home!</strong>
         </p>
         <Text code type='danger'>{error.statusText || error.message}</Text>
     </div>

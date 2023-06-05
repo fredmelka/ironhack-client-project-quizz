@@ -23,12 +23,24 @@ a:hover {
   color: #535bf2;
 }
 
-body {
+header {
+  border-bottom: 1px solid lightgray;
+  padding-bottom: 2vh;
+  height: 2vh;
+}
+
+main {
   margin: 0;
-  display: flex;
   place-items: center;
   min-width: 320px;
-  min-height: 100vh;
+}
+
+#homepage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
 }
 
 h1 {

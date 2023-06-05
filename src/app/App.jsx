@@ -1,14 +1,17 @@
 
-import React from 'react';
-import { Route } from 'react-router-dom';
-import { RouterProvider } from 'react-router-dom';
-import { createBrowserRouter } from 'react-router-dom';
-import { createRoutesFromElements } from 'react-router-dom';
-import { ConfigProvider, theme } from 'antd';
+import React                            from 'react';
+import { Route }                        from 'react-router-dom';
+import { RouterProvider }               from 'react-router-dom';
+import { createBrowserRouter }          from 'react-router-dom';
+import { createRoutesFromElements }     from 'react-router-dom';
+import { ConfigProvider, theme }        from 'antd';
 
-import Root from '../pages/Root.jsx';
-import ErrorPage from '../pages/Error.jsx';
-import Welcome from '../pages/Welcome.jsx';
+import ErrorPage                        from '../pages/Error.jsx';
+import Login                            from '../pages/Login.jsx';
+import Oopsies                          from '../pages/Oopsies.jsx';
+import Root                             from '../pages/Root.jsx';
+import Signup                           from '../pages/Signup.jsx';
+import Welcome                          from '../pages/Welcome.jsx';
 
 import './App.css';
 
@@ -20,6 +23,10 @@ const router = createBrowserRouter(createRoutesFromElements(
 
     <Route index='true' element={ <Welcome /> } />
 
+    <Route path='/login' element={ <Login /> } />
+    <Route path='/signup' element={ <Signup />} />
+
+    <Route path='*' element={ <Oopsies /> } />
   </Route>));
 
 return (
