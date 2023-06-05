@@ -31,11 +31,14 @@ const router = createBrowserRouter(createRoutesFromElements(
 
 return (
   <>
-  <ConfigProvider theme={{algorithm: theme.darkAlgorithm, token: {colorPrimary: '#ffec3d', fontSize: 20}}}>
+  <ConfigProvider theme={{algorithm: theme.darkAlgorithm, token: {colorPrimary: '#faad14', fontSize: 20}}}>
     <RouterProvider router={ router }/>
   </ConfigProvider>
   </>);
 };
+
+// ***************************
+// theme={{algorithm: null, token: {colorPrimary: '#96890f', fontSize: 20, colorBgLayout: 'red'}}}
 
 
 /* ***************************
