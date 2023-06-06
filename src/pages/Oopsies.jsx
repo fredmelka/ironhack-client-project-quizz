@@ -3,6 +3,7 @@ import React                from 'react';
 import { useNavigate }      from 'react-router-dom';
 
 
+// PAGE COMPONENT | 404 NOT FOUND PAGE
 export default function Oopsies () {
 
 let navigate = useNavigate();

@@ -13,10 +13,10 @@ export default function Login () {
 
 let { Text } = Typography;
 
-let {storeToken} = useContext(AuthContext);
+let {storeToken, authenticate} = useContext(AuthContext);
 
 let navigate = useNavigate();
-let goToLoginPage = () => {navigate('/');};
+let returnWelcomePage = () => {navigate('/');};
 
 let [_email, set_email]                 = useState(null);
 let [_password, set_password]           = useState(null);
@@ -24,7 +24,7 @@ let [showLogStatus, setShowLogStatus]   = useState(false);
 let [errorMessage, setErrorMessage]     = useState(undefined);
 
 let [messageApi, contextHolder] = message.useMessage();
-let messageWelcome = (string) => messageApi.success(`Welcome back ${string}!`, 3, goToLoginPage);
+let messageWelcome = (string) => messageApi.success(`Welcome back ${string}!`, 3, returnWelcomePage);
 
 let updateMail = (event) => {setErrorMessage(undefined); set_email(event.target.value)};
 let updatePassword = (event) => {setErrorMessage(undefined); set_password(event.target.value)};
@@ -39,6 +39,7 @@ try {
     let response = await connectUser(userToLog);
     if (response.success) {
                 storeToken(response.message);
+                authenticate();
                 setErrorMessage(undefined);
                 setShowLogStatus(true);
                 messageWelcome('')}

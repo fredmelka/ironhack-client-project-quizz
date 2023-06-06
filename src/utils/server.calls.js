@@ -21,4 +21,13 @@ try {
 catch (error) {console.log(error); return (error.response.data);};
 };
 
-export {createUser, connectUser};
+
+// VERIFY | GET @ /auth/verify
+async function verifyUser (tokenToVerify) {
+try {
+    let response = await axios.get(`${SERVER_URL}/auth/verify`, {headers: { Authorization: `Bearer ${tokenToVerify}`}});
+    return response.data;}
+catch (error) {console.log(error); return (error.response.data);};
+};
+
+export {createUser, connectUser, verifyUser};
