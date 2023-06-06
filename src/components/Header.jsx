@@ -1,10 +1,8 @@
 
-import React                                from 'react';
-import { useContext }                       from 'react';
-import { NavLink }                          from 'react-router-dom';
-import { useNavigate }                      from "react-router-dom";
-import { message, Row, Col, Tag, Button }   from 'antd';
-import { AuthContext }                      from '../context/Auth.context.jsx';
+import React, { useContext }                        from 'react';
+import { NavLink, useNavigate }                     from 'react-router-dom';
+import { AuthContext }                              from '../context/Auth.context.jsx';
+import { Col, Divider, message, Row, Tag, Button }  from 'antd';
 
 
 export default function Header () {
@@ -32,7 +30,7 @@ return (
     {/* <h3>I am the futur Header</h3> */}
     <Row>
     <Col span={22} offset={1}>
-
+{/* 
     {isLoggedIn && (
         <>
         <NavLink to='/about'>About</NavLink>
@@ -46,9 +44,10 @@ return (
             ? <Button type='link' ghost onClick={logOut}>Log Out</Button>
             : <NavLink to='/login'><Button type= 'default' style={{backgroundColor: '#12934f'}} >Log In</Button></NavLink>}
 
-    <NavLink to='/signup'><Button type='primary'> Sign Up</Button></NavLink>
+    <NavLink to='/signup'><Button type='primary'> Sign Up</Button></NavLink> */}
     </Col>
     </Row>
+    <Divider />
     </header>
     </>);
 };

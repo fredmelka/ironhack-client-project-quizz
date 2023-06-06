@@ -24,7 +24,7 @@ a:hover {
 }
 
 header {
-  border-bottom: 1px solid lightgray;
+  height: 5vh;
   padding-bottom: 1vh;
 }
 
