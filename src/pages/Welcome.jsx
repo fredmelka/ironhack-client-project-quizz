@@ -5,6 +5,8 @@ import { Link }             from 'react-router-dom';
 import { AuthContext }      from '../context/Auth.context.jsx';
 import { Button, Space }    from 'antd';      
 
+
+// PAGE COMPONENT | WELCOME PAGE
 export default function Welcome () {
 
 let {isLoggedIn} = useContext(AuthContext);
@@ -19,8 +21,8 @@ return (
         {!isLoggedIn && (
 
             <Space direction='horizontal'>
-                <Link to='/login'><Button type='primary'>Sign In</Button></Link>
-                <Link to='/signup'><Button type='default' style={{backgroundColor:'#12934f'}} >Join</Button></Link>
+                <Link to='/login'><Button type='primary'>Login</Button></Link>
+                <Link to='/signup'><Button type='default' style={{backgroundColor:'#12934f'}} >Create Account</Button></Link>
             </Space>)}
     </main>
     </>);

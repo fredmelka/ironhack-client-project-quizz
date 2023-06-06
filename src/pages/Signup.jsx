@@ -33,7 +33,10 @@ async function signUp () {
 let userToCreate = {_username, _email, _password};
 try {
     let response = await createUser(userToCreate);
-    if (response.user) {setUserId(response.id); setErrorMessage(undefined); console.log(response.user); messageWelcome(response.user)}
+    if (response.user) {
+                setUserId(response.id);
+                setErrorMessage(undefined);
+                messageWelcome(response.user)}
     else {setErrorMessage(response); setUserId(null);};
 }
 catch (error) {console.log(error)};

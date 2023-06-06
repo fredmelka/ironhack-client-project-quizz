@@ -12,9 +12,11 @@ let [isLoggedIn, setIsLoggedIn] = useState(false);
 let [isLoading, SetIsLoading] = useState(true);
 let [user, setUser] = useState(null);
 
+let storeToken = (token) => {localStorage.setItem('skweezAuthToken', token);};
+
 return (
     <>
-    <AuthContext.Provider value={{isLoggedIn, isLoading, user}}>
+    <AuthContext.Provider value={{isLoggedIn, isLoading, user, storeToken}}>
         {children}
     </AuthContext.Provider>
     </>);

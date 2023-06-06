@@ -8,7 +8,16 @@ async function createUser (userToCreate) {
 try {
     let response = await axios.post(`${SERVER_URL}/auth/signup`, userToCreate);
     return response.data.message;}
-catch (error) {console.log(error); return (error.response.data.message)};
+catch (error) {console.log(error); return (error.response.data.message);};
 };
 
-export {createUser};
+
+// LOG IN | POST @ /auth/login
+async function connectUser (userToLog) {
+try {
+    let response = await axios.post(`${SERVER_URL}/auth/login`, userToLog);
+    return response.data;}
+catch (error) {console.log(error); return (error.response.data);};
+};
+
+export {createUser, connectUser};
