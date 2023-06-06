@@ -25,6 +25,7 @@ a:hover {
 
 header {
   height: 6vh;
+  padding-top: 3vh; 
   padding-bottom: 1vh;
 }
 
