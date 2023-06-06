@@ -6,6 +6,7 @@ import { UserOutlined, LockOutlined, MailOutlined }         from '@ant-design/ic
 import { createUser }                                       from '../utils/server.calls.js';
 
 
+// PAGE COMPONENT | SIGN UP 
 export default function Signup () {
 
 let { Text } = Typography;
@@ -50,21 +51,21 @@ return (
             allowClear
             type='text'
             value={_username}
-            placeholder='Create a Username'
+            placeholder='Username'
             onChange={updateName}/>
         <Input
             addonBefore={<MailOutlined />}
             allowClear
             type='mail'
             value={_email}
-            placeholder='Enter your email'
+            placeholder='Email'
             onChange={updateMail}/>
         <Input
             addonBefore={<LockOutlined />}
             allowClear
             type='password'
             value={_password}
-            placeholder='Set your Password'
+            placeholder='Password'
             onChange={updatePassword}/>
 
         <Button type='primary' onClick={signUp}>Join Skweez!</Button>

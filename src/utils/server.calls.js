@@ -3,7 +3,7 @@ import axios from 'axios';
 import { SERVER_URL } from './keys.js';
 
 
-// SIGN UP | REQUEST | POST @ /auth/signup 
+// SIGN UP | POST @ /auth/signup 
 async function createUser (userToCreate) {
 try {
     let response = await axios.post(`${SERVER_URL}/auth/signup`, userToCreate);

@@ -1,9 +1,9 @@
 
-import React                            from 'react';
-import { useContext }                   from 'react';
-import { Link }                         from 'react-router-dom';
-import { AuthContext }                  from '../context/Auth.context.jsx';
-import { Divider, Tag }                 from 'antd';      
+import React                from 'react';
+import { useContext }       from 'react';
+import { Link }             from 'react-router-dom';
+import { AuthContext }      from '../context/Auth.context.jsx';
+import { Button, Space }    from 'antd';      
 
 export default function Welcome () {
 
@@ -17,11 +17,11 @@ return (
         <h2>Ready for the Challenge!</h2>
 
         {!isLoggedIn && (
-        <Divider>
-        <Link to='/login'><Tag color='geekblue-inverse'>Sign In</Tag></Link>
-        <Link to='/signup'><Tag color='#faad14'>Join</Tag></Link>
-        </Divider>)}
 
+            <Space direction='horizontal'>
+                <Link to='/login'><Button type='primary'>Sign In</Button></Link>
+                <Link to='/signup'><Button type='default' style={{backgroundColor:'#12934f'}} >Join</Button></Link>
+            </Space>)}
     </main>
     </>);
 };

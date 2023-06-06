@@ -1,21 +1,26 @@
 
-import React, { useState } from 'react';
-import { Input, message, Space, Typography } from 'antd';
-// import { getUser } from '../app/Crud.js';
+import React, { useState }                      from 'react';
+import { useNavigate }                          from 'react-router-dom';
+import { Input, message, Space, Typography }    from 'antd';
+import { LockOutlined, MailOutlined }           from '@ant-design/icons';
+// import { logUser }                              from '../utils/server.calls';
 
 
+// PAGE COMPONENT | LOG IN 
 export default function Login () {
 
-let { Search } = Input;
 let { Text } = Typography;
 
-let [username, setUsername] = useState();
-let [showLogStatus, setShowLogStatus] = useState(false);
+let [_email, set_email]                 = useState(null);
+let [_password, set_password]           = useState(null);
+let [showLogStatus, setShowLogStatus]   = useState(false);
+let [errorMessage, setErrorMessage]     = useState(undefined);
 
 let [messageApi, contextHolder] = message.useMessage();
-let messageWelcome = (value) => messageApi.open({type: 'success', content: `Welcome back ${value}!`});
+let messageWelcome = (string) => messageApi.success(`Welcome back ${string}!`, 3, goToLoginPage);
 
-let updateName = (event) => {setUsername(event.target.value)};
+let updateMail = (event) => {setErrorMessage(undefined); set_email(event.target.value)};
+let updatePassword = (event) => {setErrorMessage(undefined); set_password(event.target.value)};
 
 async function logUser (username) {
 try {
@@ -27,8 +32,10 @@ try {
                     else {console.log('Could not login, please check.')};
 
     console.log('storage', localStorage.getItem('myFinCockpituserId'), localStorage.getItem('myFinCockpitusername'));
-    setUsername('');
+
+    set_email(''); set_password;
     messageWelcome(userObject.owner);
+
     return userObject;}
 catch (error) {console.log(error)};
 };
@@ -36,18 +43,22 @@ catch (error) {console.log(error)};
 return (
     <>
     {contextHolder}
-    <h2>I am the Login page!</h2>
-    <h3>Please enter your username to sign in:</h3>
+    <h3>Please enter your credentials to log in:</h3>
     <Space direction='vertical'>
-        <Search
-            addonBefore='Client'
+    <Input
+            addonBefore={<MailOutlined />}
             allowClear
-            type='text'
-            value={username}
-            placeholder='Username only please!'
-            enterButton
-            onChange={updateName}
-            onSearch={() => {logUser(username)}}/>
+            type='mail'
+            value={_email}
+            placeholder='Email'
+            onChange={updateMail}/>
+    <Input
+            addonBefore={<LockOutlined />}
+            allowClear
+            type='password'
+            value={_password}
+            placeholder='Password'
+            onChange={updatePassword}/>
         
         {showLogStatus && <Text type='success'>You have successfully logged in! Welcome back {localStorage.getItem('myFinCockpitusername')}!</Text>}
     </Space>
