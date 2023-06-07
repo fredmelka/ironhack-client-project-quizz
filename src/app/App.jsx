@@ -6,14 +6,18 @@ import { createBrowserRouter }          from 'react-router-dom';
 import { createRoutesFromElements }     from 'react-router-dom';
 import { ConfigProvider, theme }        from 'antd';
 
+import Private from '../components/routing/Private.routing.jsx';
+
 import ErrorPage                        from '../pages/Error.jsx';
 import Login                            from '../pages/Login.jsx';
 import Oopsies                          from '../pages/Oopsies.jsx';
+import Questions                        from '../pages/Questions.jsx';
 import Root                             from '../pages/Root.jsx';
 import Signup                           from '../pages/Signup.jsx';
 import Welcome                          from '../pages/Welcome.jsx';
 
 import './App.css';
+
 
 export default function App() {
 
@@ -22,9 +26,10 @@ const router = createBrowserRouter(createRoutesFromElements(
   <Route path='/' element={ <Root /> } errorElement={ <ErrorPage /> }>
 
     <Route index='true' element={ <Welcome /> } />
-
     <Route path='/login' element={ <Login /> } />
-    <Route path='/signup' element={ <Signup />} />
+    <Route path='/signup' element={ <Signup /> } />
+
+    <Route path='/profile/questions' element={ <Private> <Questions /> </Private> } />
 
     <Route path='*' element={ <Oopsies /> } />
   </Route>));

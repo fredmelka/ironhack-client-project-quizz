@@ -29,7 +29,7 @@ let messageWelcome = (string) => messageApi.success(`Welcome back ${string}!`, 3
 let updateMail = (event) => {setErrorMessage(undefined); set_email(event.target.value)};
 let updatePassword = (event) => {setErrorMessage(undefined); set_password(event.target.value)};
 
-let resetFields = () => {set_email(''); set_password('')};
+let resetFields = () => {set_email(''); set_password(''); setErrorMessage('')};
 
 
 async function logUser () {
@@ -46,7 +46,7 @@ try {
     else {setErrorMessage(response.message)};
 }
 catch (error) {console.log(error)};
-resetFields();
+set_email(''); set_password('');
 };
 
 
@@ -83,5 +83,3 @@ return (
     </Space>
     </>);
 };
-
-// {showLogStatus && <Text type='success'>You have successfully logged in! Welcome back {localStorage.getItem('myFinCockpitusername')}!</Text>}
