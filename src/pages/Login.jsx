@@ -31,7 +31,7 @@ let updatePassword = (event) => {setErrorMessage(undefined); set_password(event.
 
 let resetFields = () => {set_email(''); set_password(''); setErrorMessage('')};
 
-
+// SUB-FUNCTION | LOGIN ACTIONS
 async function logUser () {
 
 let userToLog = {_email, _password};
@@ -54,8 +54,8 @@ return (
     <>
     {contextHolder}
     <h3>Please enter your credentials to log in:</h3>
+    <form>
     <Space direction='vertical'>
-        
     <Input
         addonBefore={<MailOutlined />}
         allowClear
@@ -77,9 +77,8 @@ return (
         <Button type='default' onClick={resetFields}>Reset</Button>
     </Space>
     </Link>
-
     {errorMessage && <Text style={{display: 'inline-block', width: '30vw'}} type='warning'>{errorMessage}</Text>}
-
     </Space>
+    </form>
     </>);
 };

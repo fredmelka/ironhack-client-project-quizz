@@ -10,11 +10,11 @@ import { HomeOutlined, UserOutlined, LineChartOutlined, SettingOutlined, FormOut
         
     from '@ant-design/icons';
 
-const profilMenu = [
-    {key: '1', label: (<Link to='/profile'><SettingOutlined /> my Profile</Link>)},
-    {key: '2', label: (<Link to='/profile/stats'><TrophyOutlined /> my Stats</Link>)},
-    {key: '3', label: (<Link to='/profile/quizz'><SnippetsOutlined /> my Quizz</Link>)},
-    {key: '4', label: (<Link to='/profile/questions'><CodeOutlined /> my Questions</Link>)}
+const profileMenu = [
+    {key: '1', label: (<Link to='/profile/quizz'><SnippetsOutlined /> my Quizz</Link>)},
+    {key: '2', label: (<Link to='/profile/questions'><CodeOutlined /> my Questions</Link>)},
+    {key: '3', label: (<Link to='/profile/stats'><TrophyOutlined /> my Stats</Link>)},
+    {key: '4', label: (<Link to='/profile'><SettingOutlined /> my Profile</Link>)}
 ];
 
 const quizzMenu = [
@@ -33,7 +33,7 @@ return (
     <Breadcrumb 
         items={[
             {title: <Link to='/'><><HomeOutlined /><span> Skweez</span></></Link>},
-            {title: <><UserOutlined /><span>{isLoggedIn ? ` ${user._username}`: ' Guest'}</span></>, menu: {items: profilMenu}},
+            {title: <><UserOutlined /><span>{isLoggedIn ? ` ${user._username}`: ' Guest'}</span></>, menu: {items: profileMenu}},
             {title: <><QuestionCircleOutlined /><span> Quizz!</span></>, menu: {items: quizzMenu}},
             {title: <Link to='/quickmatch'><><AlertOutlined /><span> Run Quick Test!!</span></></Link>}
     ]}/>
