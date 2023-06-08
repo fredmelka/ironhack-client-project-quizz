@@ -1,13 +1,13 @@
 
-import React, { useContext }                    from 'react'
-import { useState, useEffect }                  from 'react';
-import { AuthContext }                          from '../context/Auth.context.jsx';
-import { getQuestionsFromUser }                 from '../utils/server.calls.js';
-import QuestionTable                            from '../components/Question.table.jsx';
-import Questionform                             from '../components/Question.form.jsx';
+import React, { useContext }                        from 'react'
+import { useState, useEffect }                      from 'react';
+import { AuthContext }                              from '../context/Auth.context.jsx';
+import { getQuestionsFromUser, deleteOneQuestion }  from '../utils/server.calls.js';
+import QuestionTable                                from '../components/Question.table.jsx';
+import QuestionForm                                 from '../components/Question.form.jsx';
 
-import { Button, Divider, Space, Typography }   from 'antd';
-import {AppstoreAddOutlined, UndoOutlined}      from '@ant-design/icons';
+import { Button, Divider, Space, Typography }       from 'antd';
+import {AppstoreAddOutlined, UndoOutlined}          from '@ant-design/icons';
 
 
 // PAGE COMPONENT | WELCOME PAGE
@@ -27,7 +27,19 @@ async function getMyQuestions() {
     setQuestionList(myQuestions.data);
 };
 
-// USEEFFECT | MOUNTING AND UPDATING OF THE COMPONENT
+// SUB-FUNCTION | SERVICE CALL TO DELETE ONE QUESTION FROM DATABASE
+async function removeOneQuestion (questionId) {
+    try {
+        let response = await deleteOneQuestion(questionId);
+        if (response.success) {
+                setQuestionList(questionsList.splice(questionsList.findIndex((question) => question._id === questionId)));
+                getMyQuestions()};
+    }
+    catch (error) {console.log(error);};
+
+};
+
+// USE-EFFECT | MOUNTING AND UPDATING OF THE COMPONENT
 useEffect(() => {getMyQuestions()}, [owner, toggleQuestionForm]);
 
 return (
@@ -43,10 +55,10 @@ return (
     </Divider>
             {!toggleQuestionForm
                 ? ( <Space direction='vertical'>
-                        <QuestionTable questionsList={questionsList} />
+                        <QuestionTable questionsList={questionsList} removeOneQuestion={removeOneQuestion} />
                     </Space>)
                 : ( <Space direction='vertical'>
-                        <Questionform />
+                        <QuestionForm />
                     </Space>)
             }
     </>);

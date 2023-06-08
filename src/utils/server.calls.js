@@ -46,4 +46,13 @@ try {
 catch (error) {console.log(error);};
 };
 
-export {createUser, connectUser, verifyUser, getQuestionsFromUser, createQuestion};
+// DELETE ONE QUESTION FROM A USER | DELETE @ /questions/:_id/delete
+async function deleteOneQuestion (questionId)  {
+try {
+    let response = await service.delete(`${SERVER_URL}/questions/${questionId}/delete`);
+    return response.data;
+}
+catch (error) {console.log(error);};
+};
+
+export {createUser, connectUser, verifyUser, getQuestionsFromUser, createQuestion, deleteOneQuestion};

@@ -11,7 +11,7 @@ import {BarsOutlined, BulbOutlined, FontSizeOutlined,
                                                         from '@ant-design/icons'
 
 // PAGE COMPONENT | LOG IN 
-export default function Questionform () {
+export default function QuestionForm () {
 
 let { Text } = Typography;
 let navigate = useNavigate();
@@ -21,7 +21,7 @@ let messageError = (string) => messageApi.error(`Error ${string}`, 3, resetField
 
 let [_level, set_level ]                    = useState('Easy');
 let [_language, set_language]               = useState('French');
-let [_tags, set_tags]                       = useState([]);
+let [tags, setTags]                         = useState(''); // NO UNDERSCORE HERE ==> Will be renamed and turned into Array '_Tags' of strings right before posting
 let [_label, set_label]                     = useState('');
 let [_answers, set_answers]                 = useState([]);
 let [_picture, set_picture]                 = useState('');
@@ -30,16 +30,17 @@ let [_text, set_text]                       = useState('');
 let [_value, set_value]                     = useState(0);
 let [showAnswerModal, setShowAnswerModal]   = useState(false);
 
-let resetFields = () => {set_level('Easy'); set_language('French'); set_tags([]), set_label(''), set_answers([]), set_picture('');};
+let resetFields = () => {set_level('Easy'); set_language('French'); setTags([]), set_label(''), set_answers([]), set_picture('');};
 
 // SUB-FUNCTION | SERVICE CALL TO POST NEW QUESTION TO DATABASE
 async function postQuestion () {
     
+    // Tags is trimmed and turned into an Array of strings
+    let _tags = tags.trim().split(' ');
+    // Object Question to create
     let questionToCreate = {_tags, _level, _language, _label, _answers, _picture};
-
-    // Rejection for minimum inconsistency data (FRONT controls)
+    // Rejection for minimum inconsistency data (FRONT CONTROL)
     if (!_label || _answers.length == 0) {messageError('- No Sufficient Data to post!'); return;};
-
     try {
         let response = await createQuestion(questionToCreate);
         if (response.success) {messageSuccess(response.message)} else {messageError(response.message)};
@@ -77,9 +78,9 @@ return (
         addonBefore={<BarsOutlined />}
         allowClear
         type='text'
-        value={_tags}
+        value={tags}
         placeholder='Add Tags'
-        onChange={(event) => {set_tags(event.target.value.split(' '));}}
+        onChange={(event) => {setTags(event.target.value);}}
     />   
 
     <Input
@@ -109,14 +110,13 @@ return (
                 style={{width: '700px'}}
                 size='large'
                 addonBefore={<BulbOutlined />}
-                allowclear
+                allowClear
                 type='text'
                 value={_text}
                 placeholder='Input answer'
                 onChange={(event) => set_text(event.target.value)}
             />
             <InputNumber
-                width={150}
                 size='large'
                 addonBefore={<FieldBinaryOutlined />}
                 allowclear
