@@ -9,7 +9,6 @@ import { HomeOutlined, UserOutlined, LineChartOutlined, SettingOutlined, FormOut
         
     from '@ant-design/icons';
 
-
 const profileMenu = [
     {key: '1', label: (<Link to='/profile/quizz'><SnippetsOutlined /> my Quizz</Link>)},
     {key: '2', label: (<Link to='/profile/questions'><CodeOutlined /> my Questions</Link>)},
@@ -22,13 +21,12 @@ const quizzMenu = [
     {key: '2', label: (<Link to='/quizz/new'>    <><FormOutlined /><span> Create a quizz</span></></Link>)}
 ];
 
-
 // COMPONENT | MENU AND NAVIGATION BAR
 export default function Menu () {
     
 let { user, isLoggedIn } = useContext(AuthContext);
 
-let userIconColor = isLoggedIn ? 'green' : 'white';
+let userIconColor = isLoggedIn ? 'green' : 'red';
 
 return (
     <>

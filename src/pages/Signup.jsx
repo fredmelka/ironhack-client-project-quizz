@@ -27,20 +27,19 @@ let updateName = (event) => {setErrorMessage(undefined); set_username(event.targ
 let updateMail = (event) => {setErrorMessage(undefined); set_email(event.target.value)};
 let updatePassword = (event) => {setErrorMessage(undefined); set_password(event.target.value)};
 
-
+// SUB-FUNCTION | SIGN-UP ACTIONS
 async function signUp () {
-
-let userToCreate = {_username, _email, _password};
-try {
-    let response = await createUser(userToCreate);
-    if (response.success) {
+    let userToCreate = {_username, _email, _password};
+    try {
+        let response = await createUser(userToCreate);
+        if (response.success) {
                 setUserId(response.id);
                 setErrorMessage(undefined);
                 messageWelcome(response.user.username)}
-    else {setErrorMessage(response.message); setUserId(null);};
-}
-catch (error) {console.log(error)};
-set_username(null); set_email(null); set_password(null);
+        else {setErrorMessage(response.message); setUserId(null);};
+    }
+    catch (error) {console.log(error)};
+    set_username(null); set_email(null); set_password(null);
 };
 
 

@@ -37,4 +37,13 @@ try {
 catch (error) {console.log(error);};
 };
 
-export {createUser, connectUser, verifyUser, getQuestionsFromUser};
+// POST NEW QUESTION FROM A USER | POST @ /questions/new
+async function createQuestion (questionToCreate) {
+try {
+    let response = await service.post(`${SERVER_URL}/questions/new`, questionToCreate);
+    return response.data;
+}
+catch (error) {console.log(error);};
+};
+
+export {createUser, connectUser, verifyUser, getQuestionsFromUser, createQuestion};

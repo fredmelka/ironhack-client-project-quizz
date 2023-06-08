@@ -3,19 +3,17 @@ import React, { useContext }                    from 'react'
 import { useState, useEffect }                  from 'react';
 import { AuthContext }                          from '../context/Auth.context.jsx';
 import { getQuestionsFromUser }                 from '../utils/server.calls.js';
-import QuestionTable                            from '../components/QuestionTable.jsx';
-import Questionform                             from '../components/QuestionForm.jsx';
-import { Button, Divider, Space, Typography }   from 'antd';
+import QuestionTable                            from '../components/Question.table.jsx';
+import Questionform                             from '../components/Question.form.jsx';
 
+import { Button, Divider, Space, Typography }   from 'antd';
 import {AppstoreAddOutlined, UndoOutlined}      from '@ant-design/icons';
 
 
 // PAGE COMPONENT | WELCOME PAGE
 export default function Questions () {
 
-let { Text } = Typography;
-
-let { isLoggedIn, user } = useContext(AuthContext);
+let {  user } = useContext(AuthContext);
 let {_id: owner} = user;
 
 let [questionsList, setQuestionList] = useState([]);
@@ -29,8 +27,8 @@ async function getMyQuestions() {
     setQuestionList(myQuestions.data);
 };
 
-useEffect(() => {getMyQuestions()}, [owner]);
-
+// USEEFFECT | MOUNTING AND UPDATING OF THE COMPONENT
+useEffect(() => {getMyQuestions()}, [owner, toggleQuestionForm]);
 
 return (
     <>
@@ -45,10 +43,10 @@ return (
     </Divider>
             {!toggleQuestionForm
                 ? ( <Space direction='vertical'>
-                    <QuestionTable questionsList={questionsList} />
+                        <QuestionTable questionsList={questionsList} />
                     </Space>)
                 : ( <Space direction='vertical'>
-                    <Questionform />
+                        <Questionform />
                     </Space>)
             }
     </>);

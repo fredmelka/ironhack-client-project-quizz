@@ -17,7 +17,6 @@ let messageLogout = (value) => messageApi.open({type: 'warning', content: `Good 
 
 let logOut = () => {logOutUser(); messageLogout(user._username); navigate('/');};
 
-
 return (
     <>
     {contextHolder}

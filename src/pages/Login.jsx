@@ -33,20 +33,19 @@ let resetFields = () => {set_email(''); set_password(''); setErrorMessage('')};
 
 // SUB-FUNCTION | LOGIN ACTIONS
 async function logUser () {
-
-let userToLog = {_email, _password};
-try {
-    let response = await connectUser(userToLog);
-    if (response.success) {
+    let userToLog = {_email, _password};
+    try {
+        let response = await connectUser(userToLog);
+        if (response.success) {
                 storeToken(response.message);
                 authenticate();
                 setErrorMessage(undefined);
                 setShowLogStatus(true);
                 messageWelcome('')}
-    else {setErrorMessage(response.message)};
-}
-catch (error) {console.log(error)};
-set_email(''); set_password('');
+        else {setErrorMessage(response.message)};
+    }
+    catch (error) {console.log(error)};
+    set_email(''); set_password('');
 };
 
 
