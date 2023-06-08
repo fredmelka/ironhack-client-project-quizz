@@ -53,17 +53,22 @@ set_email(''); set_password('');
 return (
     <>
     {contextHolder}
+    
     <h3>Please enter your credentials to log in:</h3>
     <form>
-    <Space direction='vertical'>
+    <Space direction='vertical' size='large'>
+
     <Input
+        style={{width: '30vw'}}
         addonBefore={<MailOutlined />}
         allowClear
         type='mail'
         value={_email}
         placeholder='Email'
         onChange={updateMail}/>
+
     <Input
+        style={{width: '30vw'}}
         addonBefore={<LockOutlined />}
         allowClear
         type='password'
@@ -72,12 +77,14 @@ return (
         onChange={updatePassword}/>
     
     <Link >
-    <Space direction='horizontal'>
+    <Space direction='horizontal' size='large'>
         <Button type='primary' onClick={logUser}>Join Skweez!</Button>
         <Button type='default' onClick={resetFields}>Reset</Button>
     </Space>
     </Link>
-    {errorMessage && <Text style={{display: 'inline-block', width: '30vw'}} type='warning'>{errorMessage}</Text>}
+
+    {errorMessage && <Text type='danger'>{errorMessage}</Text>}
+
     </Space>
     </form>
     </>);

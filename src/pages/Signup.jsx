@@ -48,22 +48,30 @@ return (
     <>
     {contextHolder}
     <h3>Please register to sign up:</h3>
-    <Space direction='vertical'>
+    <Space direction='vertical' size='large'>
+
         <Input
+            style={{width: '30vw'}}
             addonBefore={<UserOutlined />}
             allowClear
             type='text'
+            minLength={8}
+            maxLength={20}
             value={_username}
             placeholder='Username'
             onChange={updateName}/>
+
         <Input
+            style={{width: '30vw'}}
             addonBefore={<MailOutlined />}
             allowClear
             type='mail'
             value={_email}
             placeholder='Email'
             onChange={updateMail}/>
+            
         <Input
+            style={{width: '30vw'}}
             addonBefore={<LockOutlined />}
             allowClear
             type='password'
@@ -74,7 +82,7 @@ return (
         <Button type='primary' onClick={signUp}>Join Skweez!</Button>
     
     {userId && <Text type='success'>You have successfully created your account!</Text>}
-    {errorMessage && <Text style={{display: 'inline-block', width: '30vw'}} type='warning'>{errorMessage}</Text>}
+    {errorMessage && <Text type='danger'>{errorMessage}</Text>}
     </Space>
     </>);
 };

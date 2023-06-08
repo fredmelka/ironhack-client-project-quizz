@@ -15,12 +15,8 @@ let  { Text } = Typography;
 
 let [data, setData] = useState([]);
 
-const colorLevel = (level) => {switch (level) {case 'Easy': return 'success'; case 'Intermediate': return 'warning' ; case 'Hard': return 'danger'}};
+const colorLevel = (level) => {switch (level) {case 'Easy': return 'success'; case 'Intermediate': return 'warning' ; case 'Hard': return 'danger';}};
 const colorTag = (tag) => tag.length > 5 ? '#87d068' : '#2db7f5';
-
-useEffect(() => {setData(questionsList), []})
-
-console.log('tutu', questionsList);
 
 const Columns = [
         {title: 'Level', dataIndex: '_level', key:'_level',
@@ -35,15 +31,17 @@ const Columns = [
         {title: 'Action', key: 'action',
                     render: (_, record) => (
                                             <Space size='small'>
-                                                <EditOutlined style={{color:'gold' }}  onClick={() => {} } />
+                                                <EditOutlined style={{color: 'gold'}}  onClick={() => {} } />
                                                 <DeleteOutlined style={{color: 'red'}} onClick={() => {} } /> 
                                             </Space>)}
 ];
 
 
+useEffect(() => {setData(questionsList), []})
+
 return (
     <>
-    <Skeleton active loading={data.length === 0} title={false} paragraph={{rows: 5, width: 1000}}>
+    <Skeleton active loading={data.length === 0} title={false} paragraph={{rows: 5, width: 800}}>
         <Table dataSource={data} columns={Columns} />
     </Skeleton>  
     </>);
