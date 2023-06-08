@@ -59,7 +59,7 @@ return (
     <Space direction='vertical' size='large'>
 
     <Input
-        style={{width: '30vw'}}
+        style={{width: 'max(350px, 30vw)'}}
         addonBefore={<MailOutlined />}
         allowClear
         type='mail'
@@ -68,7 +68,7 @@ return (
         onChange={updateMail}/>
 
     <Input
-        style={{width: '30vw'}}
+        style={{width: 'max(350px, 30vw)'}}
         addonBefore={<LockOutlined />}
         allowClear
         type='password'

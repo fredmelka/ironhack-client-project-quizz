@@ -2,10 +2,11 @@
 import React                                from 'react';
 import { Link }                             from 'react-router-dom';
 import { useState, useEffect }              from 'react';
-import { Button, message, Skeleton}         from 'antd';
+import { message, Popover, Skeleton}        from 'antd';
 import { Space, Table, Tag, Typography }    from 'antd';
+import AnswerList                           from './AnswerList.jsx';
 
-import { EditOutlined, DeleteOutlined }     from '@ant-design/icons';
+import { EditOutlined, DeleteOutlined, BulbOutlined }     from '@ant-design/icons';
 
 
 // COMPONENT | TABLE OF QUESTIONS OF A USER
@@ -31,8 +32,11 @@ const Columns = [
         {title: 'Action', key: 'action',
                     render: (_, record) => (
                                             <Space size='small'>
+                                                <Popover content={<AnswerList answerList={record._answers}/>} placement='left' title='Answers'>
+                                                    <BulbOutlined style={{color: 'green'}} />
+                                                </Popover>
                                                 <EditOutlined style={{color: 'gold'}}  onClick={() => {} } />
-                                                <DeleteOutlined style={{color: 'red'}} onClick={() => {} } /> 
+                                                <DeleteOutlined style={{color: 'red'}} onClick={() => {} } />
                                             </Space>)}
 ];
 

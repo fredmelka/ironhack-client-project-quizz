@@ -2,7 +2,7 @@
 import React                                    from 'react';
 import { useState }                             from 'react';
 import { message, Space, Typography }           from 'antd';
-import { Button, Input, Select }                from 'antd';
+import { Button, Input, Radio, Select }         from 'antd';
 import { AuthContext }                          from '../context/Auth.context.jsx';
 import {  }                                     from '../utils/server.calls.js';
 
@@ -22,12 +22,6 @@ let [_tags, set_tags] = useState([]);
 let [_label, set_label] = useState('');
 
 
-let update_level = (event) => {set_level(event.target.value);};
-let update_language = (event) => {set_language(event.target.value);};
-let update_tags = (event) => {set_tags(event.target.value.split(' '));};
-let update_label = (event) => {set_label(event.target.value);};
-
-
 return (
     <>
     {contextHolder}
@@ -37,23 +31,21 @@ return (
 
         <Space direction='horizontal' size='large'>
 
+    <Radio.Group size='large' onChange={(event) => {set_language(event.target.value);}} defaultValue='Easy'>
+        <Radio.Button value='Easy'>Easy</Radio.Button>
+        <Radio.Button value='Intermediate'>Intermediate</Radio.Button>
+        <Radio.Button value='Advanced'>Advanced</Radio.Button>
+    </Radio.Group>
+
     <Select
-        style={{width: '29vw'}}
-        size='large'
-        allowClear
-        showSearch
-        placeholder = 'Set Difficulty'
-        options={[{label: 'Easy', value: 'Easy'}, {label: 'Intermediate', value: 'Intermediate'}, {label: 'Hard', value: 'Hard'}]}
-        onChange={update_level}/>
-    
-    <Select
-        style={{width: '29vw'}}
+        style={{width: '31vw'}}
         size='large'
         allowClear
         showSearch
         placeholder = 'Declare Language'
         options={[{label: 'French', value: 'French'}, {label: 'English', value: 'English'}, {label: 'Chinese', value: 'Chinese', disabled: true}]}
-        onChange={update_language}/>
+        onChange={(event) => {set_language(event.target.value);}}
+    />
 
         </Space>
 
@@ -65,7 +57,8 @@ return (
         type='text'
         value={_tags}
         placeholder='Add Tags'
-        onChange={update_tags}/>   
+        onChange={(event) => {set_tags(event.target.value.split(' '));}}
+    />   
 
     <Input
         style={{width: '60vw'}}
@@ -75,11 +68,10 @@ return (
         type='text'
         value={_label}
         placeholder='Enter Question here'
-        onChange={update_label}/>        
-    
+        onChange={(event) => {set_label(event.target.value);}}
+    />        
     
     </Space>
     </form>
-
     </>)
 };
