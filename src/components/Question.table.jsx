@@ -26,13 +26,13 @@ const colorTag = (string) => {
 // RENDERING OF THE QUESTION TABLE
 const Columns = [
     
-        {title: 'Level', dataIndex: '_level', key:'_level',
+        {title: 'Level', key:'_level',
                     render: (_, record) => (<Text type={colorLevel(record._level)}>{record._level}</Text>)},
 
         {title: 'Question', dataIndex: '_label', key: '_label',
                     render: (_, record) => (<Text type='secondary'>{record._label}</Text>)},
 
-        {title: 'Tags', dataIndex: '_tags', key: '_tags',
+        {title: 'Tags', key: '_tags',
                     render: (_, {_tags}) => (_tags.map((tag) => <Tag color={colorTag(tag)}>{tag}</Tag>))},
 
         {title: 'Action', key: 'action',
@@ -54,7 +54,7 @@ return (
     <>
     <Skeleton active loading={data == null} title={false} paragraph={{rows: 5, width: 1000}}>
         {data !== null && data.length > 0  
-            ? <Table style={{width: '80vw'}} dataSource={data} columns={Columns} />
+            ? <Table size='small' style={{width: '90vw'}} dataSource={data} columns={Columns} />
             : <Empty />}
     </Skeleton>  
     </>);
