@@ -16,10 +16,12 @@ import QuestionsBank                    from '../pages/Questions.bank.jsx';
 import Root                             from '../pages/Root.jsx';
 import Signup                           from '../pages/Signup.jsx';
 import Welcome                          from '../pages/Welcome.jsx';
+import Workinprogress                   from '../pages/Work.in.progress.jsx';
 
 import './App.css';
 
 
+// APP | ROUTES AND NAVIGATION
 export default function App() {
 
 // Declare here variable 'router' under which all routes and paths are set for web navigation
@@ -35,7 +37,16 @@ const router = createBrowserRouter(createRoutesFromElements(
 
     <Route path='/questions/:_id' element={ <Private> <QuestionDetails /> </Private>} />
 
+    {/* Routes yet to be done */}
+    <Route path='/profile' element={ <Workinprogress /> } />
+    <Route path='/profile/stats' element={ <Workinprogress /> } />
+    <Route path='/profile/quizz' element={ <Workinprogress /> } />
+    <Route path='/quizz/catalog' element={ <Workinprogress /> } />
+    <Route path='/quizz/new' element={ <Workinprogress /> } />
+    <Route path='/quickmatch' element={ <Workinprogress /> } />
+
     <Route path='*' element={ <Oopsies /> } />
+
   </Route>));
 
 return (

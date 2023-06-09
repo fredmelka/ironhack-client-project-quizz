@@ -1,9 +1,9 @@
 
-import React, { useState, useEffect }                           from 'react';
-import { useNavigate }                                          from 'react-router-dom';
-import AnswerTable                                              from './Answer.table.jsx';
-import { Empty, Popover, Skeleton, Space, Table, Typography }   from 'antd';
-import { EditOutlined, DeleteOutlined, BulbOutlined }           from '@ant-design/icons';
+import React, { useState, useEffect }                               from 'react';
+import { useNavigate }                                              from 'react-router-dom';
+import AnswerTable                                                  from './Answer.table.jsx';
+import { Empty, Popover, Skeleton, Space, Tag, Table, Typography }  from 'antd';
+import { EditOutlined, DeleteOutlined, BulbOutlined }               from '@ant-design/icons';
 
 
 // COMPONENT | TABLE OF QUESTIONS OF A USER
@@ -14,7 +14,14 @@ let navigate = useNavigate();
 let [data, setData] = useState(null);
 
 const colorLevel = (level) => {switch (level) {case 'Easy': return 'success'; case 'Intermediate': return 'warning' ; case 'Hard': return 'danger';}};
-const colorTag = (tag) => tag.length > 5 ? '#87d068' : '#2db7f5';
+
+const colorSet = ['magenta', 'geekblue', 'cyan', 'volcano', 'navy', '#3b5999', '#cd201f', 'gold', '#108ee9', '#f50'];
+const memo = {};
+
+const colorTag = (string) => {
+    if (string in memo) {return memo.string;}
+    else {memo.string = colorSet[Math.floor(Math.random() * colorSet.length)]; return memo.string;};
+};
 
 // RENDERING OF THE QUESTION TABLE
 const Columns = [
@@ -26,7 +33,7 @@ const Columns = [
                     render: (_, record) => (<Text type='secondary'>{record._label}</Text>)},
 
         {title: 'Tags', dataIndex: '_tags', key: '_tags',
-                    render: (_, {_tags}) => (_tags.map((tag) => <Text code style={{color: colorTag(tag)}}>{tag}</Text>))},
+                    render: (_, {_tags}) => (_tags.map((tag) => <Tag color={colorTag(tag)}>{tag}</Tag>))},
 
         {title: 'Action', key: 'action',
                     render: (_, record) => (

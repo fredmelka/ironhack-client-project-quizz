@@ -7,8 +7,7 @@ import { updateOneQuestion }                            from '../utils/server.ca
 import AnswerForm                                       from './Answer.form.jsx';
 
 import {BarsOutlined, BulbOutlined, FontSizeOutlined,
-        FieldBinaryOutlined, FormOutlined} 
-                                                        from '@ant-design/icons'
+        FieldBinaryOutlined, FormOutlined} from '@ant-design/icons'
 
 
 // COMPONENT | QUESTION EDITOR 
@@ -16,9 +15,10 @@ export default function QuestionEditor ({questionDetails}) {
 
 let { Text } = Typography;
 let navigate = useNavigate();
+
 let [messageApi, contextHolder] = message.useMessage();
-let messageSuccess = (string) => messageApi.success(`Question updated! id: ${string}`, 3, navigate('/profile/questions'));
-let messageError = (string) => messageApi.error(`Error ${string}`, 3, resetFields);
+let messageSuccess = (string) => messageApi.success(`Question updated! id: ${string}`, 3, () => navigate('/profile/questions'));
+let messageError = (string) => messageApi.error(`Error ${string}`, 3, () => navigate('/profile/questions'));
 	
 let [_level, set_level ]                    = useState(questionDetails._level);
 let [_language, set_language]               = useState(questionDetails._language);
@@ -46,7 +46,7 @@ async function updateQuestion () {
 
 	try {
 		let response = await updateOneQuestion(questionId, dataToUpdate);
-		if (response.success) {messageSuccess(response.message)} else {messageError(response.message)};
+		if (response.success) {console.log(response.data._id); messageSuccess(response.data._id)} else {messageError(response.message)};
 		return response;
 	}
 	catch (error) {console.log(error);};
