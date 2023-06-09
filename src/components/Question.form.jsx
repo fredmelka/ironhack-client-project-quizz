@@ -2,7 +2,7 @@
 import React, { useState }                              from 'react';
 import { useNavigate }                                  from 'react-router-dom';
 import { message, Modal, Radio, Space, Typography }     from 'antd';
-import { Button, Input, InputNumber,  Select }          from 'antd';
+import { Button, Input, InputNumber }                   from 'antd';
 import { createQuestion }                               from '../utils/server.calls.js';
 import AnswerForm                                       from './Answer.form.jsx';
 
@@ -10,7 +10,7 @@ import {BarsOutlined, BulbOutlined, FontSizeOutlined,
         FieldBinaryOutlined, FormOutlined} 
                                                         from '@ant-design/icons'
 
-// PAGE COMPONENT | LOG IN 
+// COMPONENT | QUESTION FORM 
 export default function QuestionForm () {
 
 let { Text } = Typography;

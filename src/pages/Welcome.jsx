@@ -14,7 +14,7 @@ let {isLoggedIn} = useContext(AuthContext);
 return (
     <>
     <main id='homepage'>
-        {/* <img src='/assets/appicon.png' alt='finCockpit' /> */}
+        <img src='/img/skweez-logo.png' alt='skweez' />
         <h1>Welcome to Skweez</h1>
         <h2>Ready for the Challenge!</h2>
 

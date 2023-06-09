@@ -4,7 +4,7 @@ import { useNavigate, useRouteError } from 'react-router-dom';
 import { Typography } from 'antd';
 
 
-// PAGE COMPONENT | ERROR PAGE
+// PAGE COMPONENT | ERROR-HANDLING PAGE
 export default function ErrorPage() {
 
 let { Text } = Typography;

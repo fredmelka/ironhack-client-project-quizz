@@ -11,7 +11,8 @@ import Private from '../components/routing/Private.routing.jsx';
 import ErrorPage                        from '../pages/Error.jsx';
 import Login                            from '../pages/Login.jsx';
 import Oopsies                          from '../pages/Oopsies.jsx';
-import Questions                        from '../pages/Questions.jsx';
+import QuestionDetails                  from '../pages/Questions.details.jsx';
+import QuestionsBank                    from '../pages/Questions.bank.jsx';
 import Root                             from '../pages/Root.jsx';
 import Signup                           from '../pages/Signup.jsx';
 import Welcome                          from '../pages/Welcome.jsx';
@@ -26,10 +27,13 @@ const router = createBrowserRouter(createRoutesFromElements(
   <Route path='/' element={ <Root /> } errorElement={ <ErrorPage /> }>
 
     <Route index='true' element={ <Welcome /> } />
+
     <Route path='/login' element={ <Login /> } />
     <Route path='/signup' element={ <Signup /> } />
 
-    <Route path='/profile/questions' element={ <Private> <Questions /> </Private> } />
+    <Route path='/profile/questions' element={ <Private> <QuestionsBank /> </Private> } />
+
+    <Route path='/questions/:_id' element={ <Private> <QuestionDetails /> </Private>} />
 
     <Route path='*' element={ <Oopsies /> } />
   </Route>));

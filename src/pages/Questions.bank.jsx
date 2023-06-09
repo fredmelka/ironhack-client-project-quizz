@@ -10,8 +10,8 @@ import { Button, Divider, Space, Typography }       from 'antd';
 import {AppstoreAddOutlined, UndoOutlined}          from '@ant-design/icons';
 
 
-// PAGE COMPONENT | WELCOME PAGE
-export default function Questions () {
+// PAGE COMPONENT | QUESTIONS BANK
+export default function QuestionsBank () {
 
 let {  user } = useContext(AuthContext);
 let {_id: owner} = user;
@@ -31,12 +31,8 @@ async function getMyQuestions() {
 async function removeOneQuestion (questionId) {
     try {
         let response = await deleteOneQuestion(questionId);
-        if (response.success) {
-                setQuestionList(questionsList.splice(questionsList.findIndex((question) => question._id === questionId)));
-                getMyQuestions()};
-    }
+        if (response.success) {getMyQuestions()};}
     catch (error) {console.log(error);};
-
 };
 
 // USE-EFFECT | MOUNTING AND UPDATING OF THE COMPONENT

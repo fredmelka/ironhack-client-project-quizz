@@ -3,7 +3,6 @@ import axios from 'axios';
 import { SERVER_URL } from './keys.js';
 import service from './service.js';
 
-
 // SIGN UP | POST @ /auth/signup 
 async function createUser (userToCreate) {
 try {
@@ -46,6 +45,15 @@ try {
 catch (error) {console.log(error);};
 };
 
+// GET ONE QUESTION DETAILS | GET @ /questions/:_id/edit
+async function getOneQuestion (questionId) {
+try {
+    let response = await service.get(`${SERVER_URL}/questions/${questionId}/edit`);
+    return response.data;
+}
+catch (error) {console.log(error);};
+};
+
 // DELETE ONE QUESTION FROM A USER | DELETE @ /questions/:_id/delete
 async function deleteOneQuestion (questionId)  {
 try {
@@ -55,4 +63,15 @@ try {
 catch (error) {console.log(error);};
 };
 
-export {createUser, connectUser, verifyUser, getQuestionsFromUser, createQuestion, deleteOneQuestion};
+// UPDATE ONE QUESTION FROM A USER | PATCH @ /questions/:_id/udpate
+async function updateOneQuestion (questionId, dataToUpdate) {
+try {
+    let response = await service.patch(`${SERVER_URL}/questions/${questionId}/update`, dataToUpdate);
+    return response.data;
+}
+catch (error) {console.log(error);};
+};
+
+export {createUser, connectUser, verifyUser,
+    
+        getQuestionsFromUser, createQuestion, getOneQuestion, updateOneQuestion, deleteOneQuestion };

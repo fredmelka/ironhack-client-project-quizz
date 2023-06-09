@@ -10,7 +10,7 @@ export default function Private ({children}) {
 
     let {isLoggedIn, isLoading} = useContext(AuthContext);
 
-    if (isLoading) {return <Spin tip='Loading' size='Large'></Spin>};
+    if (isLoading) {return <Spin size='Large'></Spin>};
 
     if (!isLoggedIn) {return <Navigate to='/' />;} else {return children;};
 };

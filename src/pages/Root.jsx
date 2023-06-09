@@ -5,6 +5,7 @@ import Header                           from '../components/Header.jsx';
 import Footer                           from '../components/Footer.jsx';
 
 
+// ROOT COMPONENT | ROOT RENDERING AND LAYOUT
 export default function Root () {
 
 return (
